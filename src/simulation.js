@@ -58,7 +58,9 @@ window.draw = () => {
         cars.forEach((car) => car.update());
 
         if (colision.hadCollision()) {
-            sounds.crash.play();
+            if (colisionType === 'elastic') {
+                sounds.crash.play();
+            }
             colision.resolve(colisionType);
         }
     }
@@ -75,10 +77,63 @@ document.querySelector('.btn-pause').addEventListener('click', () => {
 });
 
 document.querySelector('.btn-start').addEventListener('click', () => {
+    colisionType = document.querySelector('.btn-toggle').innerText === 'Colisão elástica'
+        ? 'elastic'
+        : 'inelastic';
+
     sounds.startEngine.play();
     sounds.traffic.loop();
 
     setTimeout(() => {
         simulationRunning = true;
     }, 500);
+});
+
+document.querySelector('.btn-toggle').addEventListener('click', () => {
+    colisionType = colisionType === 'elastic' ? 'inelastic' : 'elastic';
+
+    document.querySelector('.btn-toggle').innerHTML = colisionType === 'elastic'
+        ? 'Colisão elástica'
+        : 'Colisão inelástica';
+});
+
+document.querySelector('.btn-reset').addEventListener('click', () => {
+    simulationRunning = false;
+    
+    carsProperties[0] = {
+        ...carsProperties[0],
+        weight: parseFloat(document.querySelector('#car-a-weight').value * 10),
+        speed: parseFloat(document.querySelector('#car-a-speed').value),
+    }
+
+    carsProperties[1] = {
+        ...carsProperties[1],
+        weight: parseFloat(document.querySelector('#car-b-weight').value * 10),
+        speed: parseFloat(document.querySelector('#car-b-speed').value),
+    }
+
+    cars.forEach((car, index) => car.updateParams(carsProperties[index]));
+
+    sounds.startEngine.play();
+    sounds.traffic.loop();
+
+    setTimeout(() => {
+        simulationRunning = true;
+    }, 500);
+});
+
+document.querySelector('#car-a-weight').addEventListener('change', (event) => {
+    document.querySelector('#car-a-weight-value').innerHTML = `${event.target.value * 10} kg`;
+});
+
+document.querySelector('#car-a-speed').addEventListener('change', (event) => {
+    document.querySelector('#car-a-speed-value').innerHTML = `${event.target.value} m/s`;
+});
+
+document.querySelector('#car-b-weight').addEventListener('change', (event) => {
+    document.querySelector('#car-b-weight-value').innerHTML = `${event.target.value * 10} kg`;
+});
+
+document.querySelector('#car-b-speed').addEventListener('change', (event) => {
+    document.querySelector('#car-b-speed-value').innerHTML = `${event.target.value} m/s`;
 });
