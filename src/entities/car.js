@@ -12,6 +12,15 @@ export default class Car {
         this.image = image;
     }
 
+    updateParams({ x, y, diameter, speed, weight, image }) {
+        this.x = x;
+        this.y = y;
+        this.diameter = diameter;
+        this.speed = speed;
+        this.weight = weight;
+        this.image = image;
+    }
+
     update() {
         this.move();
 
@@ -37,15 +46,15 @@ export default class Car {
         textAlign(CENTER, BOTTOM);
 
         // Exibe a velocidade e a massa do carrinho
-        text(`Velocidade: ${this.speed.toFixed(2)}`, this.x + 150, this.y - this.diameter - 20);
-        text(`Massa: ${this.weight}`, this.x + 160, this.y - this.diameter - 35);
+        text(`Velocidade: ${this.speed.toFixed(2)} m/s`, this.x + 150, this.y - this.diameter - 20);
+        text(`Massa: ${this.weight} kg`, this.x + 160, this.y - this.diameter - 35);
 
         // Calcular a energia cinética
         const kineticEnergy = 0.5 * this.weight * (this.speed ** 2);
-        text(`Energia Cinética: ${kineticEnergy.toFixed(2)}`, this.x + 150, this.y - this.diameter - 50);
+        text(`Energia Cinética: ${kineticEnergy.toFixed(2)} J`, this.x + 150, this.y - this.diameter - 50);
 
         // Calcular e exibe o momento do carrinho
         const momentum = this.weight * this.speed;
-        text(`Momento: ${momentum.toFixed(2)}`, this.x + 160, this.y - this.diameter - 65);
+        text(`Momento: ${momentum.toFixed(2)} kgm/s`, this.x + 160, this.y - this.diameter - 65);
     }
 }

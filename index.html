@@ -5,15 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colision Simulator</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
 </head>
 
 <body>
     <main style="margin-top: 50px; position: relative; display: flex; align-items: center; flex-direction: column;">
         <div style="position: absolute; margin-top: 20px;">
-            <button class="btn-pause">Pause</button>
-            <button class="btn-start">Simular</button>
-            <div style="background: #aaa">
-                Caixa
+            <div class="flex gap-12">
+                <div class="ml-[-200px] flex gap-24">
+                    <div class="bg-gray-500 rounded-lg p-4 text-white w-[300px]">
+                        <div class="font-semibold mb-4">Carro A</div>
+                        <div>
+                            <label for="car-a-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Massa: <span id="car-a-weight-value">100 kg</span></label>
+                            <input id="car-a-weight" type="range" value="10" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+                            <label for="car-a-speed" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Velocidade: <span id="car-a-speed-value">10 m/s</span></label>
+                            <input id="car-a-speed" type="range" value="10" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+                        </div>
+                    </div>
+                    <div class="bg-gray-500 rounded-lg p-4 text-white w-[300px]">
+                        <div class="font-semibold mb-4">Carro B</div>
+                        <div>
+                            <label for="car-b-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Massa: <span id="car-b-weight-value">100 kg</span></label>
+                            <input id="car-b-weight" type="range" value="10" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+                            <label for="car-b-speed" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Velocidade: <span id="car-b-speed-value">10 m/s</span></label>
+                            <input id="car-b-speed" type="range" value="10" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 flex flex-col">
+                    <button class="btn-start focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Simular</button>
+                    <button class="btn-pause text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Pausar</button>
+                    <button class="btn-reset focus:outline-none text-white bg-red-400 hover:bg-red-500 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-red-900">Atualizar valores</button>
+                    <button class="btn-toggle text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Colisão elástica</button>
+                </div>
             </div>
         </div>
     </main>
