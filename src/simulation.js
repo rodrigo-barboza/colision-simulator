@@ -47,7 +47,8 @@ window.setup = () => {
 
     cars = carsProperties.map((car) => new Car(car));
     colision = new Colision(cars);
-
+    document.querySelector('#car-a-info').innerHTML = cars[0].toString();
+    document.querySelector('#car-b-info').innerHTML = cars[1].toString();
 }
 
 window.draw = () => {
@@ -65,6 +66,8 @@ window.draw = () => {
     }
 
     cars.forEach((car, index) => car.displayInfo((index + 1) * 150));
+    document.querySelector('#car-a-info').innerHTML = cars[0].toString();
+    document.querySelector('#car-b-info').innerHTML = cars[1].toString();
 }
 
 window.windowResized = () => {
