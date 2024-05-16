@@ -1,2 +1,2 @@
-export const CAR_WIDTH = 394;
-export const CAR_HEIGHT = 159;
+export const CAR_WIDTH = 132;
+export const CAR_HEIGHT = 53;

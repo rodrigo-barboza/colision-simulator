@@ -8,7 +8,7 @@ let cars = [];
 
 let colision;
 let simulationRunning = false;
-let colisionType = 'elastic';
+let coefficient_restitution = 1;
 
 const { clientWidth, clientHeight } = document.documentElement;
 
@@ -25,18 +25,18 @@ window.preload = () => {
     carsProperties = [
         {
             x: 100,
-            y: 450,
-            diameter: 50,
+            y: 650,
+            diameter: 0,
             speed: 5,
             weight: 100,
             image: loadImage('./assets/images/car-a.png'),
         },
         {
             x: 1000,
-            y: 450,
-            diameter: 50,
+            y: 650,
+            diameter: 0,
             speed: 0,
-            weight: 140,
+            weight: 100,
             image: loadImage('./assets/images/car-b.png'),
         },
     ];
@@ -47,6 +47,7 @@ window.setup = () => {
 
     cars = carsProperties.map((car) => new Car(car));
     colision = new Colision(cars);
+
 }
 
 window.draw = () => {
@@ -58,14 +59,12 @@ window.draw = () => {
         cars.forEach((car) => car.update());
 
         if (colision.hadCollision()) {
-            if (colisionType === 'elastic') {
-                sounds.crash.play();
-            }
-            colision.resolve(colisionType);
+
+            colision.resolve(coefficient_restitution);
         }
     }
 
-    cars.forEach((car) => car.displayInfo());
+    cars.forEach((car, index) => car.displayInfo((index + 1) * 150));
 }
 
 window.windowResized = () => {
@@ -77,9 +76,6 @@ document.querySelector('.btn-pause').addEventListener('click', () => {
 });
 
 document.querySelector('.btn-start').addEventListener('click', () => {
-    colisionType = document.querySelector('.btn-toggle').innerText === 'Colisão elástica'
-        ? 'elastic'
-        : 'inelastic';
 
     sounds.startEngine.play();
     sounds.traffic.loop();
@@ -89,13 +85,7 @@ document.querySelector('.btn-start').addEventListener('click', () => {
     }, 500);
 });
 
-document.querySelector('.btn-toggle').addEventListener('click', () => {
-    colisionType = colisionType === 'elastic' ? 'inelastic' : 'elastic';
 
-    document.querySelector('.btn-toggle').innerHTML = colisionType === 'elastic'
-        ? 'Colisão elástica'
-        : 'Colisão inelástica';
-});
 
 document.querySelector('.btn-reset').addEventListener('click', () => {
     simulationRunning = false;
@@ -120,6 +110,12 @@ document.querySelector('.btn-reset').addEventListener('click', () => {
     setTimeout(() => {
         simulationRunning = true;
     }, 500);
+});
+
+document.querySelector('#co-rest').addEventListener('change', (event) => {
+    coefficient_restitution = event.target.value;
+    print(coefficient_restitution);
+    document.querySelector('#co-rest-value').innerHTML = `${event.target.value}`;
 });
 
 document.querySelector('#car-a-weight').addEventListener('change', (event) => {

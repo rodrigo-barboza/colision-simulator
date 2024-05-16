@@ -10,27 +10,11 @@ export default class Colision {
         return dist(this.carA.x, this.carA.y, this.carB.x, this.carB.y) < CAR_WIDTH;
     }
 
-    elastic() {
-        let tempSpeed = this.carA.speed;
+    resolve(coefficient_restitution) {
+        let tempSpeedA = this.carA.speed;
 
-        this.carA.speed = this.carB.speed;
-        this.carB.speed = tempSpeed;
-    }
+        this.carA.speed = (coefficient_restitution * this.carB.weight * (this.carB.speed - this.carA.speed) + (this.carA.weight * this.carA.speed) + (this.carB.weight * this.carB.speed)) / (this.carA.weight + this.carB.weight)
 
-    inelastic() {
-        // Calcula a velocidade média dos objetos
-        let averageSpeed = (this.carA.speed + this.carB.speed) / 2;
-
-        // Define a mesma velocidade para ambos os objetos
-        this.carA.speed = averageSpeed;
-        this.carB.speed = averageSpeed;
-    }
-
-    resolve(type) {
-        if (type === ELASTIC) {
-            return this.elastic();
-        }
-
-        return this.inelastic();
+        this.carB.speed = (coefficient_restitution * this.carA.weight * (tempSpeedA - this.carB.speed) + (this.carA.weight * tempSpeedA) + (this.carB.weight * this.carB.speed)) / (this.carA.weight + this.carB.weight)
     }
 }
