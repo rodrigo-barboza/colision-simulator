@@ -15,25 +15,25 @@ const { clientWidth, clientHeight } = document.documentElement;
 window.preload = () => {
     backgroundImage = loadImage('./assets/images/background.png');
 
-    sounds = {
-        engine: window.loadSound('./assets/sounds/engine_sound.mp3'),
-        crash: window.loadSound('./assets/sounds/qubodup-crash.ogg'),
-        startEngine: window.loadSound('./assets/sounds/engine_start_up_01.wav'),
-        traffic: window.loadSound('./assets/sounds/gatve-varniu.ogg'),
-    };
+    // sounds = {
+    //     engine: window.loadSound('./assets/sounds/engine_sound.mp3'),
+    //     crash: window.loadSound('./assets/sounds/qubodup-crash.ogg'),
+    //     startEngine: window.loadSound('./assets/sounds/engine_start_up_01.wav'),
+    //     traffic: window.loadSound('./assets/sounds/gatve-varniu.ogg'),
+    // };
 
     carsProperties = [
         {
             x: 100,
-            y: 650,
+            y: 450,
             diameter: 0,
             speed: 5,
             weight: 100,
             image: loadImage('./assets/images/car-a.png'),
         },
         {
-            x: 1000,
-            y: 650,
+            x: 900,
+            y: 450,
             diameter: 0,
             speed: 0,
             weight: 100,
@@ -43,7 +43,7 @@ window.preload = () => {
 }
 
 window.setup = () => {
-    canvas = createCanvas(clientWidth - 200, clientHeight - 200);
+    canvas = createCanvas(clientWidth - 200, clientHeight - 50);
 
     cars = carsProperties.map((car) => new Car(car));
     colision = new Colision(cars);
@@ -71,7 +71,7 @@ window.draw = () => {
 }
 
 window.windowResized = () => {
-    resizeCanvas(clientWidth - 200, clientHeight - 200);
+    resizeCanvas(clientWidth - 200, clientHeight - 50);
 }
 
 document.querySelector('.btn-pause').addEventListener('click', () => {
@@ -80,8 +80,8 @@ document.querySelector('.btn-pause').addEventListener('click', () => {
 
 document.querySelector('.btn-start').addEventListener('click', () => {
 
-    sounds.startEngine.play();
-    sounds.traffic.loop();
+    // sounds.startEngine.play();
+    // sounds.traffic.loop();
 
     setTimeout(() => {
         simulationRunning = true;
@@ -107,8 +107,8 @@ document.querySelector('.btn-reset').addEventListener('click', () => {
 
     cars.forEach((car, index) => car.updateParams(carsProperties[index]));
 
-    sounds.startEngine.play();
-    sounds.traffic.loop();
+    // sounds.startEngine.play();
+    // sounds.traffic.loop();
 
     setTimeout(() => {
         simulationRunning = true;

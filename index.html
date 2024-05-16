@@ -10,35 +10,37 @@
 
 <body>
     <main style="margin-top: 50px; position: relative; display: flex; align-items: center; flex-direction: column;">
-        <div style="position: absolute; margin-top: 20px;">
+        <div style="position: absolute;">
             <div class="flex gap-12">
-                <div class="ml-[-200px] flex gap-24">
+                <div class="flex gap-24">
                     <div class="bg-gray-500 rounded-lg p-4 text-white w-[300px]">
-                        <div class="font-semibold mb-4">Coeficiente de restituição</div>
+                        <div class="font-semibold mb-1">Coeficiente de restituição</div>
                         <div>
-                            <label for="car-a-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Coeficiente de
+                            <label for="car-a-weight" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Coeficiente de
                                 restituição: <span id="co-rest-value">1.0</span></label>
                             <input id="co-rest" type="range" value="1" min="0" max="1.0" step="0.1"
                                 class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
                         </div>
                         </div>
                         <div class="bg-gray-500 rounded-lg p-4 text-white w-[300px]">
-                        <div class="font-semibold mb-4">Carro A</div>
+                        <div class="font-semibold mb-1">Carro A</div>
                         <div>
-                            <label for="car-a-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Massa: <span id="car-a-weight-value">100 kg</span></label>
+                            <label for="car-a-weight" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Massa: <span
+                                    id="car-a-weight-value">100 kg</span></label>
                             <input id="car-a-weight" type="range" value="10" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
-                            <label for="car-a-speed" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Velocidade: <span
+                            <label for="car-a-speed" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Velocidade: <span
                                     id="car-a-speed-value">5 m/s</span></label>
                             <input id="car-a-speed" type="range" value="5"
                                 class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
                         </div>
                     </div>
                     <div class="bg-gray-500 rounded-lg p-4 text-white w-[300px]">
-                        <div class="font-semibold mb-4">Carro B</div>
+                        <div class="font-semibold mb-1">Carro B</div>
                         <div>
-                            <label for="car-b-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Massa: <span id="car-b-weight-value">100 kg</span></label>
+                            <label for="car-b-weight" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Massa: <span
+                                    id="car-b-weight-value">100 kg</span></label>
                             <input id="car-b-weight" type="range" value="10" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
-                            <label for="car-b-speed" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Velocidade: <span
+                            <label for="car-b-speed" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Velocidade: <span
                                     id="car-b-speed-value">0 m/s</span></label>
                             <input id="car-b-speed" type="range" value="0"
                                 class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
@@ -52,13 +54,13 @@
                     
                 </div>
                 </div>
-                <div style="margin-top: 20px;" class="flex gap-12">
-                    <div style="margin-top: 20px;" class="bg-gray-500 rounded-lg p-4 text-white w-[300px]">
-                        <div class="font-semibold mb-4">Carro A dados</div>
+                <div style="margin-top: 20px; justify-content: center;" class="flex gap-12">
+                    <div class="bg-gray-500 rounded-lg p-4 text-white w-[300px] h-[130px]">
+                        <div class="font-semibold mb-1">Carro A dados</div>
                         <div id="car-a-info"></div>
                     </div>
-                    <div style="margin-top: 20px;" class="bg-gray-500 rounded-lg p-4 text-white w-[300px]">
-                        <div class="font-semibold mb-4">Carro B dados</div>
+                    <div class="bg-gray-500 rounded-lg p-4 text-white w-[300px] h-[130px]">
+                        <div class="font-semibold mb-1">Carro B dados</div>
                         <div id="car-b-info"></div>
                     </div>
                 </div>
@@ -66,7 +68,7 @@
         </div>
     </main>
     <script src="./lib/p5.min.js" type="text/javascript"></script>
-    <script src="./lib/p5.sound.min.js" type="text/javascript"></script>
+    <!-- <script src="./lib/p5.sound.min.js" type="text/javascript"></script> -->
     <script src="./src/simulation.js" type="module"></script>
 </body>
 
