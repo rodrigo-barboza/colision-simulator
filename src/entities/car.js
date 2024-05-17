@@ -1,6 +1,6 @@
 import { CAR_WIDTH, CAR_HEIGHT } from '../constants/car-dimensions.js';
 
-const { clientWidth } = document.documentElement;
+const clientWidth = 1100;
 
 export default class Car {
     constructor({ x, y, diameter, speed, weight, image }) {
@@ -27,7 +27,7 @@ export default class Car {
         // Verifica se a bolinha atinge as bordas da tela e inverte a direção
         if (
             this.x <= this.diameter / 2
-            || this.x >= (clientWidth - 200 - CAR_WIDTH) - this.diameter / 2
+            || this.x >= (clientWidth - CAR_WIDTH) - this.diameter / 2
         ) {
             this.speed *= -1;
         }

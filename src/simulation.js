@@ -10,7 +10,8 @@ let colision;
 let simulationRunning = false;
 let coefficient_restitution = 1;
 
-const { clientWidth, clientHeight } = document.documentElement;
+const clientWidth = 1100;
+const clientHeight = 700;
 
 window.preload = () => {
     backgroundImage = loadImage('./assets/images/background.png');
@@ -43,7 +44,7 @@ window.preload = () => {
 }
 
 window.setup = () => {
-    canvas = createCanvas(clientWidth - 200, clientHeight - 50);
+    canvas = createCanvas(clientWidth, clientHeight);
 
     cars = carsProperties.map((car) => new Car(car));
     colision = new Colision(cars);
@@ -71,7 +72,7 @@ window.draw = () => {
 }
 
 window.windowResized = () => {
-    resizeCanvas(clientWidth - 200, clientHeight - 50);
+    resizeCanvas(clientWidth, clientHeight);
 }
 
 document.querySelector('.btn-pause').addEventListener('click', () => {
