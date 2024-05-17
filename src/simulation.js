@@ -15,12 +15,12 @@ const { clientWidth, clientHeight } = document.documentElement;
 window.preload = () => {
     backgroundImage = loadImage('./assets/images/background.png');
 
-    // sounds = {
-    //     engine: window.loadSound('./assets/sounds/engine_sound.mp3'),
-    //     crash: window.loadSound('./assets/sounds/qubodup-crash.ogg'),
-    //     startEngine: window.loadSound('./assets/sounds/engine_start_up_01.wav'),
-    //     traffic: window.loadSound('./assets/sounds/gatve-varniu.ogg'),
-    // };
+    sounds = {
+        engine: window.loadSound('./assets/sounds/engine_sound.mp3'),
+        crash: window.loadSound('./assets/sounds/qubodup-crash.ogg'),
+        startEngine: window.loadSound('./assets/sounds/engine_start_up_01.wav'),
+        traffic: window.loadSound('./assets/sounds/gatve-varniu.ogg'),
+    };
 
     carsProperties = [
         {
@@ -80,8 +80,8 @@ document.querySelector('.btn-pause').addEventListener('click', () => {
 
 document.querySelector('.btn-start').addEventListener('click', () => {
 
-    // sounds.startEngine.play();
-    // sounds.traffic.loop();
+    sounds.startEngine.play();
+    sounds.traffic.loop();
 
     setTimeout(() => {
         simulationRunning = true;
@@ -107,8 +107,8 @@ document.querySelector('.btn-reset').addEventListener('click', () => {
 
     cars.forEach((car, index) => car.updateParams(carsProperties[index]));
 
-    // sounds.startEngine.play();
-    // sounds.traffic.loop();
+    sounds.startEngine.play();
+    sounds.traffic.loop();
 
     setTimeout(() => {
         simulationRunning = true;
